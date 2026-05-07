@@ -1,0 +1,75 @@
+#Global Environment
+spring:
+  profiles:
+    active: local
+  main:
+    banner-mode: off
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+
+---
+#Local Environment
+server:
+  port: 8080
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    read-write:
+      hikari:
+        jdbc-url: jdbc:h2:mem:homework;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL
+        username: sa
+        password: password
+        driver-class-name: org.h2.Driver
+        maximum-pool-size: 5
+        pool-name: "read-write-pool"
+        read-only: false
+    read-only:
+      hikari:
+        jdbc-url: jdbc:h2:mem:homework;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL
+        username: sa
+        password: password
+        driver-class-name: org.h2.Driver
+        maximum-pool-size: 5
+        pool-name: "read-only-pool"
+        read-only: true
+---
+#Test Environment
+server:
+  port: 4913
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    read-write:
+      hikari:
+        jdbc-url: jdbc:h2:mem:homework;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL
+        username: sa
+        password: password
+        driver-class-name: org.h2.Driver
+        maximum-pool-size: 5
+        pool-name: "read-write-pool"
+        read-only: false
+    read-only:
+      hikari:
+        jdbc-url: jdbc:h2:mem:homework;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL
+        username: sa
+        password: password
+        driver-class-name: org.h2.Driver
+        maximum-pool-size: 5
+        pool-name: "read-only-pool"
+        read-only: true
