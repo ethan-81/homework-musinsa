@@ -88,6 +88,23 @@
 첨부 파일 저장 위치 > java -jar musinsa-0.0.1-SNAPSHOT.jar
 ```
 
+### 8.1 API
++  http://localhost:8080/swagger/swagger.html
+
++ 포인트 적립 API
+    + 리소스 : POST http://localhost:8080/homework/point/charge
++ 포인트 적립 취소 API
+    + 리소스 : POST http://localhost:8080/homework/point/charge/cancel
++ 포인트 시용 API
+    + 리소스 : POST http://localhost:8080/homework/point/use
++ 포인트 사용 취소 API
+    + 리소스 : POST http://localhost:8080/homework/point/use/cancel
+
+### 8.2 DB Console
++ http://localhost:8080/h2-console
++ JDBC URL : jdbc:h2:mem:homework
++ ID / PW : sa / password
+
 ## 9. 향후 확장 방향 (Future Expansion)
 
 현재 프로젝트는 핵심 비즈니스 로직의 정합성과 확장성을 고려하여 설계되었으며, 향후 다음과 같은 방향으로 확장이 가능합니다.
