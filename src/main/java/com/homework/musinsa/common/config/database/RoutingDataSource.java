@@ -1,4 +1,4 @@
-package com.homework.musinsa.config.database;
+package com.homework.musinsa.common.config.database;
 
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;

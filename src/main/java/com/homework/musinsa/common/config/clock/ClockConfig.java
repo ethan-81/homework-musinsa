@@ -1,4 +1,4 @@
-package com.homework.musinsa.config.clock;
+package com.homework.musinsa.common.config.clock;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

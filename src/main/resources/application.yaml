@@ -18,6 +18,9 @@ spring:
       hibernate:
         format_sql: true
     defer-datasource-initialization: true
+  sql:
+    init:
+      data-locations: classpath:data.sql
 
 ---
 #Local Environment
@@ -46,6 +49,20 @@ spring:
         maximum-pool-size: 5
         pool-name: "read-only-pool"
         read-only: true
+
+springdoc:
+  api-docs:
+    path: /swagger/api-docs
+  swagger-ui:
+    path: /swagger/swagger.html
+    groups-order: DESC
+    tags-sorter: alpha
+    operations-sorter: method
+    disable-swagger-default-url: true
+    display-request-duration: true
+  show-actuator: true
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
 ---
 #Test Environment
 server:
