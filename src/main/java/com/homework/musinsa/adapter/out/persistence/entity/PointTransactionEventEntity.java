@@ -14,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Index;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,7 +34,9 @@ import java.time.LocalDateTime;
         name = "point_transaction_event",
         indexes = {
                 @Index(name = "idx_pte_transaction_id", columnList = "transaction_id"),
-                @Index(name = "idx_pte_idempotency_key", columnList = "idempotency_key")})
+                @Index(name = "idx_pte_idempotency_key", columnList = "idempotency_key")},
+        uniqueConstraints = {
+                @UniqueConstraint(name = "uk_pte_idempotency_key", columnNames = "idempotency_key")})
 public class PointTransactionEventEntity {
     // === 식별자 ===
     @Id
